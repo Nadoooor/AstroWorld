@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroWorld</title>
+    <script src="aframe.js"></script>
+    <script
+        src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+</head>
+
+<body>
+    <a-scene stats>
+        <a-sky src="Space.jpg"></a-sky>
+        <a-entity camera="" wasd-controls="fly: true" look-controls="" position="199.74028771696533 9.55748848243433 72.53015772287516" rotation="-11.91752213872113 2.9793805346802977 0">
+            <a-entity raycaster="objects: .clickable" cursor=""></a-entity>
+        </a-entity>
+        <!-- <a-entity camera="" wasd-controls="fly: true" look-controls="" position="0 1.6 0">
+            <a-entity raycaster="objects: .clickable" cursor></a-entity>
+        </a-entity> -->
+        <!-- <a-entity environment="preset: forest"></a-entity> -->
+
+
+        <a-entity gltf-model="Sun.glb" scale="8 8 8 " position="0 0 0" animation-mixer>
+        </a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 10500; easing: linear">
+            <a-light position="-18.5459 0 12.12861" light="decay: 0.18; intensity: 5.39; type: point"></a-light>
+        </a-entity>
+        <!-- Planets -->
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
+            <a-entity gltf-model="Mercury.glb" scale="1 1 1" position="90 0 0"></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear">
+            <a-entity gltf-model="Venus.glb" scale="3 3 3" position="110 -0.3 0"></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 10500; easing: linear">
+            <a-entity gltf-model="Earth.glb" scale="4 4 4" position="130 0 0"></a-entity>
+        </a-entity>
+
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear">
+            <a-entity gltf-model="Mars.glb" animation-mixer scale="2 2 2" rotation="45 0 0"
+                position="150 0 0"></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 9999; easing: linear">
+            <a-entity gltf-model="Jupiter.glb" scale="8 8 8" position="190 0 0" animation-mixer></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear">
+            <a-entity gltf-model="Saturn.glb" animation-mixer scale="7 7 7" rotation="45 0 0"
+                position="240 0 0"></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear">
+            <a-entity gltf-model="Uranus.glb" scale="6 6 6" position="270 0 0"></a-entity>
+        </a-entity>
+
+        <a-entity geometry="primitive: box" position="0 0 0"
+            animation=": rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear">
+            <a-entity gltf-model="Neptune.glb" scale="0.5 0.5 0.5" position="300 0 0"></a-entity>
+        </a-entity>
+
+        <a-ring scale="82.5 82.5 82.5" color="white" radius-inner="1.1" radius-outer="1.11" rotation="-90 0 0"></a-ring>
+
+    </a-scene>
+</body>
+
+</html>
