@@ -5,78 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AstroWorld</title>
-    <script src="aframe.js"></script>
-    <script
-        src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script> 
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.js"></script>
+
+    <!-- my scripts -->
+     <script src="Control-Panal.js"></script>
 </head>
 
 <body>
     <a-scene stats>
-        <a-sky src="Space.jpg"></a-sky>
-        <a-entity camera="" wasd-controls="fly: true" look-controls="" position="199.74028771696533 9.55748848243433 72.53015772287516" rotation="-11.91752213872113 2.9793805346802977 0">
-            <a-entity raycaster="objects: .clickable" cursor=""></a-entity>
+        <a-sky  src="Space.jpg"></a-sky>
+            <a-entity camera=""  wasd-controls="fly: true" look-controls="" position="162.0166675477467 79.82157558818017 269.7830870166256" rotation="-0.7331755186177592 2.2918311805233005 0">
+            <a-entity raycaster="objects: .clickable" cursor="fuse: false" id="curs" material="shader: flat; color: red" position="0 0 -0.5" geometry="primitive: circle; radius: 0.005"></a-entity>
         </a-entity>
         <!-- <a-entity camera="" wasd-controls="fly: true" look-controls="" position="0 1.6 0">
             <a-entity raycaster="objects: .clickable" cursor></a-entity>
         </a-entity> -->
         <!-- <a-entity environment="preset: forest"></a-entity> -->
 
-
-        <a-entity gltf-model="Sun.glb" scale="8 8 8 " position="0 0 0" animation-mixer>
+        <a-entity sound="src: url(Music.mp3); autoplay: true;loop: true; volume: 0.5; positional: false" scale="800 800 800" geometry="primitive: box"></a-entity>
+        <a-entity gltf-model="Sun.glb" scale="8 8 8 " position="0 0 0" >
         </a-entity>
         <a-entity geometry="primitive: box" position="0 0 0"
             animation=": rotation; to: 0 360 0; loop: true; dur: 10500; easing: linear">
-            <a-light position="-18.5459 0 12.12861" light="decay: 0.18; intensity: 5.39; type: point"></a-light>
+            <a-light id="light" position="-18.5459 0 12.12861" light="decay: 0.18; intensity: 5.39; type: point"></a-light>
         </a-entity>
         <!-- Planets -->
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
-            <a-entity gltf-model="Mercury.glb" scale="1 1 1" position="90 0 0"></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 479000; easing: linear">
+            <a-entity gltf-model="Mercury.glb" scale="1 1 1" position="89.6 -0.7 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear">
-            <a-entity gltf-model="Venus.glb" scale="3 3 3" position="110 -0.3 0"></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 350000; easing: linear">
+            <a-entity gltf-model="Venus.glb" scale="3 3 3" position="109.3 -2.3 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 10500; easing: linear">
-            <a-entity gltf-model="Earth.glb" scale="4 4 4" position="130 0 0"></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 298000; easing: linear">
+            <a-entity gltf-model="Earth.glb" scale="4 4 4" position="135 0 0"></a-entity>
         </a-entity>
 
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear">
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 241000; easing: linear">
             <a-entity gltf-model="Mars.glb" animation-mixer scale="2 2 2" rotation="45 0 0"
-                position="150 0 0"></a-entity>
+                position="156.5 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 9999; easing: linear">
-            <a-entity gltf-model="Jupiter.glb" scale="8 8 8" position="190 0 0" animation-mixer></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 131000; easing: linear">
+            <a-entity gltf-model="Jupiter.glb" scale="8 8 8" position="200 0 0" animation-mixer></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear">
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 97000; easing: linear">
             <a-entity gltf-model="Saturn.glb" animation-mixer scale="7 7 7" rotation="45 0 0"
-                position="240 0 0"></a-entity>
+                position="245 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear">
-            <a-entity gltf-model="Uranus.glb" scale="6 6 6" position="270 0 0"></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 68000; easing: linear">
+            <a-entity gltf-model="Uranus.glb" scale="6 6 6" position="277.7 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0"
-            animation=": rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear">
-            <a-entity gltf-model="Neptune.glb" scale="0.5 0.5 0.5" position="300 0 0"></a-entity>
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 54000; easing: linear">
+            <a-entity gltf-model="Neptune.glb" scale="0.5 0.5 0.5" position="310 0 0"></a-entity>
         </a-entity>
 
-        <a-ring scale="82.5 82.5 82.5" color="white" radius-inner="1.1" radius-outer="1.11" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="82.5 82.5 82.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="102.5 102.5 102.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="122.5 122.5 122.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="142.5 142.5 142.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        
+        <a-ring material="shader: flat" scale="182.5 182.5 182.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="222.5 222.5 222.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="252.5 252.5 252.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+        <a-ring material="shader: flat" scale="282.5 282.5 282.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
+
+
+        <!-- control-panal -->
+            <a-entity position="162 80 264" >
+                <a-plane scale="6 6 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
+                <!-- the name of the menu -->
+                <a-text value="Control-Panal" material="side: double;" align="center" position="0 2 0" scale="2 2 2"></a-text>
+                <a-text value="Control-Panal" material="side: double;" align="center" position="0 2 0" scale="2 2 -2"></a-text>
+                <a-box class="clickable" light+ scale="0.5 0.5 0.5" material="side: double; shader: flat" position="0 0 0" color="white">
+                    <a-text value="Light +"  material="side: double;"  align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Light +" material="side: double;"  align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+                <a-box class="clickable"  scale="0.5 0.5 0.5" material="side: double; shader: flat" position="2 0 0" color="white">
+                    <a-text value="Music +"  material="side: double;" align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Music +" material="side: double;" align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+                <a-box class="clickable" scale="0.5 0.5 0.5" speed+ material="side: double; shader: flat" position="-2 0 0" color="white">
+                    <a-text value="Speed +" material="side: double;" align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Speed +" material="side: double;" align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+                <a-box class="clickable" light- scale="0.5 0.5 0.5" material="side: double; shader: flat" position="0 -2 0" color="white">
+                    <a-text value="Light -" material="side: double;" align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Light -" material="side: double;" align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+                <a-box class="clickable" scale="0.5 0.5 0.5" material="side: double; shader: flat" position="2 -2 0" color="white">
+                    <a-text value="Music -" material="side: double;" align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Music -" material="side: double;" align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+                <a-box class="clickable" speed- scale="0.5 0.5 0.5" material="side: double; shader: flat" position="-2 -2 0" color="white">
+                    <a-text value="Speed -" material="side: double;" align="center" scale="2 2 -2" position="0 2 0" ></a-text>
+                    <a-text value="Speed -" material="side: double;" align="center" scale="2 2 2" position="0 2 0" ></a-text>
+                </a-box>
+            </a-entity>
+            
 
     </a-scene>
 </body>
