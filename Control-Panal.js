@@ -201,7 +201,10 @@ AFRAME.registerComponent('call', {
        click.volume = 0.3;
         const target = this.data.targetid;
          console.log(target);
+         var canclick = true;
       this.el.addEventListener('click', function (e) {
+          console.log(canclick);
+        if (canclick === true){
         click.play();
         const INFOPanal = document.getElementById(target);
         // console.log(this.data.targetid);
@@ -219,7 +222,13 @@ AFRAME.registerComponent('call', {
             PanalTrans.setRotation(new Ammo.btQuaternion(camrot.x, camrot.y, camrot.z, camrot.w));
             INFOPanal.body.setWorldTransform(PanalTrans);
             INFOPanal.body.activate();
-
+            canclick = false;
+            setTimeout(() => {
+                canclick = true;
+console.log('Click re-enabled');
+            }, 3000)} else {
+                console.log('Please wait before clicking again.');
+            }
         
       });
     },
@@ -229,3 +238,20 @@ AFRAME.registerComponent('call', {
 
 
 
+AFRAME.registerComponent('run', {
+    init: function () {
+        const cam = document.querySelector('#camera');
+      window.addEventListener('keydown', function (e) {
+
+        if (e.key === 'shift' || e.key === 'Shift'){
+         cam.setAttribute('wasd-controls', 'acceleration', '500');
+        }
+      });
+        window.addEventListener('keyup', function (e) {
+        if (e.key === 'shift' || e.key === 'Shift'){
+         cam.setAttribute('wasd-controls', 'acceleration', '100');
+
+        }
+      }); 
+    },
+});
