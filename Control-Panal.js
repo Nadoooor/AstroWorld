@@ -92,14 +92,136 @@ AFRAME.registerComponent('light-', {
     }
 });
 
-AFRAME.registerComponent('Music+', {
+AFRAME.registerComponent('music+', {
     init: function () {
         console.log('Music + component initialized');
         this.el.addEventListener('click', function (e) {
             const Music = document.querySelector('#sound');
             var volume = Music.getAttribute('sound').volume;
-            
+            const volprc = document.querySelectorAll('.volprc');
+            volume += 0.1;
+            var newvol = 0;
+            volprc.forEach(vol => {
+                var volval = vol.getAttribute('value');
+                newvol = parseInt(volval) + 10; 
+                if (newvol > 100){
+                    newvol = 100;
+                } else if (newvol < 0){
+                    newvol = 0;
+                }
+                vol.setAttribute('value', newvol.toString() + '%');
+            });
+            if (volume > 1 ){
+                volume = 1;
+            } else if (volume < 0 ){
+                volume = 0;
+            }
+            Music.setAttribute('sound', 'volume', volume);
+            console.log('Music volume increased to', volume, newvol.toString() + '%');
+
         });
     }
 });
+
+AFRAME.registerComponent('music-', {
+    init: function () {
+        console.log('Music + component initialized');
+        this.el.addEventListener('click', function (e) {
+            const Music = document.querySelector('#sound');
+            var volume = Music.getAttribute('sound').volume;
+            const volprc = document.querySelectorAll('.volprc');
+            volume -= 0.1;
+            var newvol = 0;
+            volprc.forEach(vol => {
+                var volval = vol.getAttribute('value');
+                newvol = parseInt(volval) - 10; 
+                if (newvol > 100){
+                    newvol = 100;
+                } else if (newvol < 0){
+                    newvol = 0;
+                }
+                vol.setAttribute('value', newvol.toString() + '%');
+            });
+            if (volume > 1 ){
+                volume = 1;
+            } else if (volume < 0 ){
+                volume = 0;
+            }
+            Music.setAttribute('sound', 'volume', volume);
+            console.log('Music volume increased to', volume, newvol.toString() + '%');
+
+        });
+    }
+});
+
+
+
+AFRAME.registerComponent('controlpanal', {
+
+
+    init: function () {
+      window.addEventListener('keydown', function (e) {
+        const controlPanal = document.querySelector('#controlpanal');
+        var cam = document.querySelector('#camera');
+        var campos = new THREE.Vector3();
+        cam.object3D.getWorldPosition(campos);
+        var camrot = new THREE.Quaternion();
+        cam.object3D.getWorldQuaternion(camrot);
+        var camdir = new THREE.Vector3();
+        cam.object3D.getWorldDirection(camdir);
+        campos.add(camdir.multiplyScalar(-5));
+        if (e.key === 'T' || e.key === 't'){
+            console.log('T key pressed - Moving Control Panel Up');
+            var PanalTrans = new Ammo.btTransform();
+            PanalTrans.setIdentity();
+            PanalTrans.setOrigin(new Ammo.btVector3(campos.x, campos.y, campos.z))
+            PanalTrans.setRotation(new Ammo.btQuaternion(camrot.x, camrot.y, camrot.z, camrot.w));
+            controlPanal.body.setWorldTransform(PanalTrans);
+            controlPanal.body.activate();
+            console.log('Control Panel moved to camera position due to key press:', controlPanal.body ,e.key);
+
+        }
+      });
+    },
+
+
+});
+
+AFRAME.registerComponent('call', {
+    schema:{
+        targetid: {type: 'string', default: ''},
+    },
+
+    init: function () {
+        const click = new Audio('Click.mp3');
+       
+        const target = this.data.targetid;
+         console.log(target);
+      this.el.addEventListener('click', function (e) {
+        click.play();
+        const INFOPanal = document.getElementById(target);
+        // console.log(this.data.targetid);
+        var cam = document.querySelector('#camera');
+        var campos = new THREE.Vector3();
+        cam.object3D.getWorldPosition(campos);
+        var camrot = new THREE.Quaternion();
+        cam.object3D.getWorldQuaternion(camrot);
+        var camdir = new THREE.Vector3();
+        cam.object3D.getWorldDirection(camdir);
+        campos.add(camdir.multiplyScalar(-5));
+            var PanalTrans = new Ammo.btTransform();
+            PanalTrans.setIdentity();
+            PanalTrans.setOrigin(new Ammo.btVector3(campos.x, campos.y, campos.z))
+            PanalTrans.setRotation(new Ammo.btQuaternion(camrot.x, camrot.y, camrot.z, camrot.w));
+            INFOPanal.body.setWorldTransform(PanalTrans);
+            INFOPanal.body.activate();
+
+        
+      });
+    },
+
+
+});
+
+
 
