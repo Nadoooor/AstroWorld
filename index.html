@@ -16,16 +16,12 @@
 </head>
 
 <body>
-    <a-scene physics="driver: ammo; debug: true" stats>
+    <a-scene physics="driver: ammo; debug: false" >
         <a-sky  src="Space.jpg"></a-sky>
-<a-entity run camera="" id="camera" wasd-controls="fly: true; " look-controls="" position="119.33079196056322 -2.7782367726850405 15.357059568153469" rotation="-2.5210142985756194 -325.55461919333345 0">
+<a-entity run="" camera="" id="camera" wasd-controls="acceleration: 100; fly: true" look-controls="" position="217.30704993613168 47.16707333880353 126.17898560220527" rotation="-19.938931270552647 51.1078353256694 0">
             <a-entity geometry="" ammo-body="gravity: NaN NaN; type: kinematic" ammo-shape="type: box; halfExtents: 0.5 0.5 0.5; sphereRadius: NaN"></a-entity>
-            <a-entity raycaster="objects: .clickable; showLine: true" cursor="" id="curs" material="shader: flat; color: red" position="0 0 -0.5" geometry="primitive: circle; radius: 0.005" line="end: 0 0 -1000; color: white"></a-entity>
+            <a-entity raycaster="objects: .clickable; showLine: true" cursor="" id="curs" material="shader: flat; color: red" position="0 0 -0.5" geometry="primitive: circle; radius: 0.005" line="end: 0 0 -190.62483055930616; color: white"></a-entity>
         </a-entity>
-        <!-- <a-entity camera="" wasd-controls="fly: true" look-controls="" position="0 1.6 0">
-            <a-entity raycaster="objects: .clickable" cursor></a-entity>
-        </a-entity> -->
-        <!-- <a-entity environment="preset: forest"></a-entity> -->
 
         <a-entity id="sound" sound="src: url(Music.mp3); autoplay: true;loop: true; volume: 0.5; positional: false" scale="800 800 800" geometry="primitive: box"></a-entity>
         <a-entity ammo-body="type: kinematic" ammo-shape="type: sphere" class="clickable" call="targetid: sun" gltf-model="Sun.glb" scale="8 8 8 " position="0 0 0" >
