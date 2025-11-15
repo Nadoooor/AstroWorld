@@ -35,47 +35,47 @@
             <a-light id="light" position="-18.5459 0 12.12861" light="decay: 0.18; intensity: 5.39; type: point"></a-light>
         </a-entity>
         <!-- Planets -->
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" class="clickable" call="targetid: Mercury"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 479000; easing: linear">
-            <a-entity gltf-model="Mercury.glb" scale="1 1 1" position="89.6 -0.7 0"></a-entity>
+            <a-entity gltf-model="Mercury.glb" class="clickable" call="targetid: Mercury" scale="1 1 1" position="89.6 -0.7 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" class="clickable" call="targetid: Venus"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 350000; easing: linear">
-            <a-entity gltf-model="Venus.glb" scale="3 3 3" position="109.3 -2.3 0"></a-entity>
+            <a-entity gltf-model="Venus.glb" class="clickable" call="targetid: Venus" scale="3 3 3" position="109.3 -2.3 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" class="clickable" call="targetid: Earth"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 298000; easing: linear">
-            <a-entity gltf-model="Earth.glb" scale="4 4 4" position="135 0 0"></a-entity>
+            <a-entity gltf-model="Earth.glb" class="clickable" call="targetid: Earth" scale="4 4 4" position="135 0 0"></a-entity>
         </a-entity>
 
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" class="clickable" call="targetid: Mars"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 241000; easing: linear">
-            <a-entity gltf-model="Mars.glb" animation-mixer scale="2 2 2" rotation="45 0 0"
+            <a-entity gltf-model="Mars.glb" class="clickable" call="targetid: Mars" animation-mixer scale="2 2 2" rotation="45 0 0"
                 position="156.5 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" class="clickable" call="targetid: Jupiter"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 131000; easing: linear">
-            <a-entity gltf-model="Jupiter.glb" scale="8 8 8" position="200 0 0" animation-mixer></a-entity>
+            <a-entity gltf-model="Jupiter.glb" class="clickable" call="targetid: Jupiter" scale="8 8 8" position="200 0 0" animation-mixer></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets" Animation=""
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 97000; easing: linear">
-            <a-entity gltf-model="Saturn.glb" animation-mixer scale="7 7 7" rotation="45 0 0"
+            <a-entity gltf-model="Saturn.glb" class="clickable" call="targetid: Saturn" animation-mixer scale="7 7 7" rotation="45 0 0"
                 position="245 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 68000; easing: linear">
-            <a-entity gltf-model="Uranus.glb" scale="6 6 6" position="277.7 0 0"></a-entity>
+            <a-entity gltf-model="Uranus.glb" class="clickable" call="targetid: Uranus" scale="6 6 6" position="277.7 0 0"></a-entity>
         </a-entity>
 
-        <a-entity geometry="primitive: box" position="0 0 0" class="planets"
+        <a-entity geometry="primitive: box" position="0 0 0" class="planets" 
             animation="property: rotation; to: 0 360 0; loop: true; dur: 54000; easing: linear">
-            <a-entity gltf-model="Neptune.glb" scale="0.5 0.5 0.5" position="310 0 0"></a-entity>
+            <a-entity gltf-model="Neptune.glb" class="clickable" call="targetid: Neptune" scale="0.5 0.5 0.5" position="310 0 0"></a-entity>
         </a-entity>
 
         <a-ring material="shader: flat" scale="82.5 82.5 82.5" color="white" radius-inner="1.1" radius-outer="1.101" rotation="-90 0 0"></a-ring>
@@ -151,9 +151,11 @@
                 Fact: Its surface temperature is about 5,500°C (5,778 K)."></a-text>
             </a-entity>
             <!-- Earth -->
-                <a-entity position="9 2 1 ">
+                <a-entity position="9 2 1 " id="Earth" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Earth" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Earth" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
+
                 <a-image src="Earth.jpg" height="3.5" width="4.5" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Size: Largest and densest of the inner planets.
 
@@ -162,11 +164,19 @@
                 Surface: Only known world to harbor liquid water on its surface.
 
                 Moon: Has one large natural satellite (the Moon)."></a-text>
+                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Size: Largest and densest of the inner planets.
+
+                Atmosphere: Nitrogen and Oxygen, supporting life.
+
+                Surface: Only known world to harbor liquid water on its surface.
+
+                Moon: Has one large natural satellite (the Moon)."></a-text>
             </a-entity>
             <!-- Mars -->
-                <a-entity position="16 2 1 ">
+                <a-entity position="16 2 1 " id="Mars" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Mars" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Mars" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Mars.jpg" height="3.5" width="5" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Size: Second smallest planet (about half the size of Earth).
 
@@ -175,11 +185,19 @@
                 Surface: Characterized by reddish dust (due to iron oxide/rust), vast canyons, and the largest volcano in the Solar System, Olympus Mons.
 
                 Fact: Evidence suggests liquid water once flowed on its surface."></a-text>
+                                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Size: Second smallest planet (about half the size of Earth).
+
+                Atmosphere: Thin, mostly Carbon Dioxide.
+
+                Surface: Characterized by reddish dust (due to iron oxide/rust), vast canyons, and the largest volcano in the Solar System, Olympus Mons.
+
+                Fact: Evidence suggests liquid water once flowed on its surface."></a-text>
                 </a-entity>
             <!-- Saturn-->
-             <a-entity position="16 11 1 ">
+             <a-entity position="16 11 1 " id="Saturn" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Saturn" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Saturn" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Saturn.jpg" height="3.5" width="5" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Type: Gas Giant.
 
@@ -188,11 +206,19 @@
                 Composition: Mostly Hydrogen and Helium.
 
                 Density: It is the least dense planet; it would float in water."></a-text>
+                                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Type: Gas Giant.
+
+                Feature: Known for its prominent, complex system of icy rings (composed mostly of ice particles and rock).
+
+                Composition: Mostly Hydrogen and Helium.
+
+                Density: It is the least dense planet; it would float in water."></a-text>
             </a-entity>
             <!-- Jupetar -->
-            <a-entity position="9 11 1 ">
+            <a-entity position="9 11 1 " id="Jupiter" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Jupiter" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Jupiter" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Jupiter.jpg" height="3.5" width="5" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Type: Gas Giant.
 
@@ -203,11 +229,21 @@
                 Feature: Famous for the Great Red Spot, a massive storm larger than Earth that has raged for centuries.
 
                 Moons: Has at least 95 confirmed moons, including the four Galilean moons (Io, Europa, Ganymede, Callisto)."></a-text>
+                               <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Type: Gas Giant.
+
+                Size: Largest planet; its mass is 2.5 times that of all other planets combined.
+
+                Composition: Primarily Hydrogen and Helium.
+
+                Feature: Famous for the Great Red Spot, a massive storm larger than Earth that has raged for centuries.
+
+                Moons: Has at least 95 confirmed moons, including the four Galilean moons (Io, Europa, Ganymede, Callisto)."></a-text>
             </a-entity>
             <!-- Neptune -->
-            <a-entity position="2 11 1 ">
+            <a-entity position="2 11 1 " id="Neptune" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Neptune" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Neptune" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Neptune.jpg" height="3.5" width="5" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Type: Ice Giant.
 
@@ -216,22 +252,36 @@
                 Feature: Windiest world in the Solar System, with the fastest sustained winds ever recorded.
 
                 Color: Its blue color comes from methane in its atmosphere."></a-text>
+                                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Type: Ice Giant.
+
+                Size: Slightly smaller than Uranus, but denser.
+
+                Feature: Windiest world in the Solar System, with the fastest sustained winds ever recorded.
+
+                Color: Its blue color comes from methane in its atmosphere."></a-text>
             </a-entity>
             <!-- Uranus -->
-            <a-entity position="2 20 1 ">
+            <a-entity position="2 20 1 " id="Uranus" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1"> 
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Uranus" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Uranus" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Uranus.jpg" height="4" width="4" position="0 1 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2.5 0" color="yellow" value="Type: Ice Giant.
 
                 Composition: Mostly heavier elements like water, methane, and ammonia ices over a small rocky core.
 
                 Tilt: Its most distinguishing feature is its extreme axial tilt (98 degrees), making it appear to roll on its side as it orbits the Sun."></a-text>
+                                <a-text align="left" position="-2.4  -2.5 0" scale="1 1 -1" color="yellow" value="Type: Ice Giant.
+
+                Composition: Mostly heavier elements like water, methane, and ammonia ices over a small rocky core.
+
+                Tilt: Its most distinguishing feature is its extreme axial tilt (98 degrees), making it appear to roll on its side as it orbits the Sun."></a-text>
             </a-entity>
             <!-- Venus -->
-                <a-entity position="9 20 1 ">
+                <a-entity position="9 20 1 " id="Venus" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Venus" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Venus" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Venus.jpg" height="3.5" width="4" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Size: Nearly Earth-sized (often called Earth's 'sister planet')
 
@@ -240,13 +290,28 @@
                 Temperature: Hottest planet, with a runaway greenhouse effect and an average surface temperature of 471∘C (hot enough to melt lead).
 
                 Rotation: Rotates backward (retrograde) and very slowly."></a-text>
+                                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Size: Nearly Earth-sized (often called Earth's 'sister planet')
+
+                Atmosphere: Extremely thick, toxic atmosphere of Carbon Dioxide and Sulfuric Acid clouds.
+
+                Temperature: Hottest planet, with a runaway greenhouse effect and an average surface temperature of 471∘C (hot enough to melt lead).
+
+                Rotation: Rotates backward (retrograde) and very slowly."></a-text>
             </a-entity>
             <!-- Mercury -->
-                            <a-entity position="16 20 1 ">
+                            <a-entity position="16 20 1 " id="Mercury" ammo-body="type: dynamic; gravity: 0 0 0; linearDamping: 0.5; angularDamping: 0.5;  " ammo-shape="type: box; fit: manual; halfExtents: 2.8 4 0.1">
                 <a-plane scale="5.5 8 1" material="side: double; transparent: true; opacity: 0.5; shader: flat" color="black"></a-plane>
                 <a-text value="Mercury" align="center" position="0 3.6 0" scale="2 2 2"></a-text>
+                <a-text value="Mercury" align="center" position="0 3.6 0" scale="2 2 -2"></a-text>
                 <a-image src="Mercury.jpg" height="3.5" width="4" position="0 1.5 0.001"></a-image>
                 <a-text align="left" position="-2.4  -2 0" color="yellow" value="Size: Smallest planet in the Solar System.
+
+                Atmosphere: Virtually none (Exosphere).
+
+                Surface: Heavily cratered, similar to Earth's Moon.
+
+                Rotation/Orbit: Has the shortest orbit (88 Earth days) and the most extreme temperature swings (from 430∘C to −180∘C)."></a-text>
+                                <a-text align="left" position="-2.4  -2 0" scale="1 1 -1" color="yellow" value="Size: Smallest planet in the Solar System.
 
                 Atmosphere: Virtually none (Exosphere).
 
