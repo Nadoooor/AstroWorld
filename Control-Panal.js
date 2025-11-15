@@ -160,6 +160,8 @@ AFRAME.registerComponent('controlpanal', {
 
 
     init: function () {
+        const click = new Audio('Click.mp3');
+        click.volume = 0.3;
       window.addEventListener('keydown', function (e) {
         const controlPanal = document.querySelector('#controlpanal');
         var cam = document.querySelector('#camera');
@@ -171,6 +173,8 @@ AFRAME.registerComponent('controlpanal', {
         cam.object3D.getWorldDirection(camdir);
         campos.add(camdir.multiplyScalar(-5));
         if (e.key === 'T' || e.key === 't'){
+                    click.play();
+
             console.log('T key pressed - Moving Control Panel Up');
             var PanalTrans = new Ammo.btTransform();
             PanalTrans.setIdentity();
@@ -194,7 +198,7 @@ AFRAME.registerComponent('call', {
 
     init: function () {
         const click = new Audio('Click.mp3');
-       
+       click.volume = 0.3;
         const target = this.data.targetid;
          console.log(target);
       this.el.addEventListener('click', function (e) {
